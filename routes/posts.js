@@ -11,9 +11,11 @@ router.get("/", (req, res) => {
         })
         .catch(error => {
             res.status(500).json({
-                message: "error returning ALL posts"
+                error: "The posts information could not be retrieved."
             })
         })
 })
+
+router.get()
 
 module.exports = router
