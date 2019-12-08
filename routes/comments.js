@@ -11,9 +11,31 @@ router.get("/", (req, res) => {
         })
         .catch(error => {
             res.status(500).json({
-                message: "Could not get hub messages"
+                error: "The comments information could not be retrieved."
             })
         })
 })
+
+// db request not written to filter by postID
+/* router.get("/:commentId", (req, res) => {
+
+    console.log(req.params.commentId)
+    db.findCommentById(req.params.commentId)
+        .then(comment => {
+            if (comment) {
+                res.json(comment)
+            } else {
+                res.status(404).json({
+                    message: "Comment not found!"
+                })
+            }
+        })
+        .catch(error => {
+            res.status(500).json({
+                error: "Could not find post comment"
+            })
+        })
+})
+ */
 
 module.exports = router

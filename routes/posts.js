@@ -4,6 +4,7 @@ const commentRouter = require("./comments")
 const router = express.Router()
 
 router.use("/:id/comments", commentRouter)
+
 // GET
 router.get("/", (req, res) => {
     db.find()
@@ -37,6 +38,7 @@ router.get("/:id", (req, res) => {
         })
 })
 
+//POST
 
 
 module.exports = router
