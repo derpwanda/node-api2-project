@@ -39,6 +39,26 @@ router.get("/:id", (req, res) => {
 })
 
 //POST
+//CREATE POST
+router.post("/", (req, res) => {
+    console.log(req.body)
+    if (!req.body.title) {
+        return res.status(400).json({ message: "Missing post title" })
+    }
 
+    if (!req.body.contents) {
+        return res.status(400).json({ message: "Missing post contents" })
+    }
+
+    db.insert(req.body)
+        .then(post => {
+            res.status(201).json(post)
+        })
+        .catch(error => {
+            res.status(500).json({
+                error: "Unable to add post"
+            })
+        })
+})
 
 module.exports = router
